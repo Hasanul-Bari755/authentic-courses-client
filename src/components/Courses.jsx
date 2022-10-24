@@ -13,6 +13,7 @@ const Courses = () => {
            </div>
  
             <div className='col-span-1'>
+                
                 {
                     courses.map(c => <ul className="menu bg-base-100 w-56 rounded-box"><li><Link to={`/course/${c._id}`}>{c.name}</Link></li></ul>)
                 }

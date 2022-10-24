@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { FaGoogle,FaGithub } from "react-icons/fa";
 
 const Header = () => {
     return (
@@ -13,13 +14,13 @@ const Header = () => {
         </a>
         <div class="flex items-center">
             <a href="tel:5541251234" class="mr-6 text-sm font-medium text-gray-500 dark:text-white hover:underline">(555) 412-1234</a>
-            <a href="#" class="text-sm font-medium text-blue-600 dark:text-blue-500 hover:underline">Login</a>
+            <Link to='/login' class="text-sm font-medium text-blue-600 dark:text-blue-500 hover:underline">Login</Link>
         </div>
     </div>
 </nav>
 <nav class="bg-gray-50 dark:bg-gray-700">
     <div class="py-3 px-4 mx-auto max-w-screen-xl md:px-6">
-        <div class="flex items-center">
+        <div class="flex items-center justify-between">
             <ul class="flex flex-row mt-0 mr-6 space-x-8 text-sm font-medium">
                 <li>
                     <Link to="/" class="text-gray-900 dark:text-white hover:underline" aria-current="page">Courses</Link>
@@ -34,6 +35,7 @@ const Header = () => {
                     <a href="#" class="text-gray-900 dark:text-white hover:underline">Features</a>
                 </li>
             </ul>
+                     
         </div>
     </div>
 </nav>
