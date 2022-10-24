@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
     return (
@@ -21,7 +22,7 @@ const Header = () => {
         <div class="flex items-center">
             <ul class="flex flex-row mt-0 mr-6 space-x-8 text-sm font-medium">
                 <li>
-                    <a href="#" class="text-gray-900 dark:text-white hover:underline" aria-current="page">Home</a>
+                    <Link to="/" class="text-gray-900 dark:text-white hover:underline" aria-current="page">Courses</Link>
                 </li>
                 <li>
                     <a href="#" class="text-gray-900 dark:text-white hover:underline">Company</a>
