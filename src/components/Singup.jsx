@@ -1,8 +1,10 @@
 import React from 'react';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../contexts/AuthProvider';
 
 const Singup = () => {
-
+    const {createUser,updateUserProfile} = useContext(AuthContext) 
     const handleSubmit = (event) => {
         event.preventDefault();
         const form = event.target;
@@ -10,7 +12,23 @@ const Singup = () => {
         const photoURL = form.photoURL.value;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(name,photoURL,email,password)
+        
+        createUser(email, password)
+        .then(result => {
+            console.log(result.user)
+            handleUpdateUserProfile(name,photoURL)
+        })
+            .catch(e => {
+            console.error(e)
+        })
+    }
+
+    const handleUpdateUserProfile = (name, photoURL) => {
+        const profile = {
+            displayName: name,
+            photoURL: photoURL
+        }
+        updateUserProfile(profile)
     }
      return (
         <div>
@@ -48,7 +66,7 @@ const Singup = () => {
           
         </div>
         <div className="form-control mt-6">
-          <button className="btn btn-primary">Login</button>
+          <button className="btn btn-primary">Sign Up</button>
         <span><small>Allready have an account yet?<Link to='/login'><button className="btn btn-link">Login</button></Link></small></span>
            
         </div>

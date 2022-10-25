@@ -11,7 +11,8 @@ const CheckOut = () => {
                 <img src={picture} alt="" className="object-cover object-center w-full rounded-md h-72 dark:bg-gray-500" />
                 <div className="mt-6 mb-2">
                     <span className="block text-xs font-medium tracking-widest uppercase dark:text-emerald-400">Course ID: {_id }</span>
-                    <h2 className="text-xl font-semibold tracking-wide">Course name: {name }</h2>
+                    <h2 className="text-xl font-semibold tracking-wide">Course name: {name}</h2>
+                    <h5 className='text-4xl font-semibold bg-gray-800 text-white text-center rounded-sm p-2'>Price: {course.price }$</h5>
                 </div>
                 
             </div>

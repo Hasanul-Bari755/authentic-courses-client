@@ -1,8 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaGoogle,FaGithub } from "react-icons/fa";
+
+import { useContext } from 'react';
+import { AuthContext } from '../contexts/AuthProvider';
+import { FaUser } from 'react-icons/fa';
 
 const Header = () => {
+   const {user} = useContext(AuthContext)
     return (
         <div>
             
@@ -13,8 +17,22 @@ const Header = () => {
             <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Authentic Course</span>
         </a>
         <div class="flex items-center">
-            <a href="tel:5541251234" class="mr-6 text-sm font-medium text-gray-500 dark:text-white hover:underline">(555) 412-1234</a>
-            <Link to='/login' class="text-sm font-medium text-blue-600 dark:text-blue-500 hover:underline">Login</Link>
+                        <a href="tel:5541251234" class="mr-6 text-sm font-medium text-gray-500 dark:text-white hover:underline">{user.displayName}</a>
+                        {
+                            user?.photoURL ?
+                        <div className="avatar mr-2">
+                            <div className="w-8 rounded">
+                                <img src={user?.photoURL} alt="Tailwind-CSS-Avatar-component" />
+                            </div>
+                         </div> :
+                        <FaUser></FaUser>        
+                        }
+                {user?.uid ? 
+                 <Link to='/login' class="text-sm font-medium text-blue-600 dark:text-blue-500 hover:underline">Logout</Link>
+                :
+                <Link to='/login' class="text-sm font-medium text-blue-600 dark:text-blue-500 hover:underline">Login</Link>
+             }          
+           
         </div>
     </div>
 </nav>
@@ -32,7 +50,7 @@ const Header = () => {
                     <a href="#" class="text-gray-900 dark:text-white hover:underline">Team</a>
                 </li>
                 <li>
-                    <a href="#" class="text-gray-900 dark:text-white hover:underline">Features</a>
+                    <a href="#" class="text-gray-900 dark:text-white hover:underline">{ user?.name}</a>
                 </li>
             </ul>
                      
