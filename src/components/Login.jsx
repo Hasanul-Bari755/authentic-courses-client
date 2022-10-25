@@ -2,12 +2,15 @@ import React from 'react';
 import { useState } from 'react';
 import { useContext } from 'react';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthProvider';
 
 const Login = () => {
     const [error, setError] = useState('');
-     const {login} = useContext(AuthContext)
+    const { login } = useContext(AuthContext)
+    const navigate = useNavigate();
+
+
     const handleSubmit = (event) => {
          event.preventDefault();
         const form = event.target;
@@ -20,6 +23,7 @@ const Login = () => {
                 setError('')
                 console.log(user)
                 form.reset()
+                navigate('/')
             })
             .catch(e => {
                 console.error(e)
