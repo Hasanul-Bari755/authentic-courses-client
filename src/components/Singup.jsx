@@ -1,10 +1,15 @@
 import React from 'react';
+import { useState } from 'react';
 import { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthProvider';
 
 const Singup = () => {
-    const {createUser,updateUserProfile} = useContext(AuthContext) 
+    const [error, setError] = useState('');
+
+    const { createUser, updateUserProfile, verifyEmail } = useContext(AuthContext) 
+    
     const handleSubmit = (event) => {
         event.preventDefault();
         const form = event.target;
@@ -16,10 +21,15 @@ const Singup = () => {
         createUser(email, password)
         .then(result => {
             console.log(result.user)
-            handleUpdateUserProfile(name,photoURL)
+            setError('')
+            form.reset();
+            handleUpdateUserProfile(name, photoURL)
+            handleEmailVerification();
+            toast.success('Please verify your email address')
         })
             .catch(e => {
-            console.error(e)
+                console.error(e)
+                setError(e.message)
         })
     }
 
@@ -29,6 +39,14 @@ const Singup = () => {
             photoURL: photoURL
         }
         updateUserProfile(profile)
+            .then(() => { })
+        .catch(e=> console.log(e))
+    }
+
+    const handleEmailVerification = () => {
+        verifyEmail()
+            .then(() => { })
+        .catch(e=> console.error(e))
     }
      return (
         <div>
@@ -63,8 +81,8 @@ const Singup = () => {
             <span className="label-text">Password</span>
           </label>
           <input name='password' type="password" placeholder="password" className="input input-bordered" required />
-          
-        </div>
+             </div>
+            <p className='text-red-600'>{error }</p>
         <div className="form-control mt-6">
           <button className="btn btn-primary">Sign Up</button>
         <span><small>Allready have an account yet?<Link to='/login'><button className="btn btn-link">Login</button></Link></small></span>

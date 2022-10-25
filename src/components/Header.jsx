@@ -6,7 +6,11 @@ import { AuthContext } from '../contexts/AuthProvider';
 import { FaUser } from 'react-icons/fa';
 
 const Header = () => {
-   const {user} = useContext(AuthContext)
+    const { user,logout } = useContext(AuthContext)
+    
+    const handleLogout = () => {
+        logout()
+    }
     return (
         <div>
             
@@ -17,7 +21,7 @@ const Header = () => {
             <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Authentic Course</span>
         </a>
         <div class="flex items-center">
-                        <a href="tel:5541251234" class="mr-6 text-sm font-medium text-gray-500 dark:text-white hover:underline">{user.displayName}</a>
+                        <a href="tel:5541251234" class="mr-6 text-sm font-medium text-gray-500 dark:text-white hover:underline">{user?.displayName}</a>
                         {
                             user?.photoURL ?
                         <div className="avatar mr-2">
@@ -25,10 +29,10 @@ const Header = () => {
                                 <img src={user?.photoURL} alt="Tailwind-CSS-Avatar-component" />
                             </div>
                          </div> :
-                        <FaUser></FaUser>        
+                        <FaUser className='mr-3'></FaUser>        
                         }
                 {user?.uid ? 
-                 <Link to='/login' class="text-sm font-medium text-blue-600 dark:text-blue-500 hover:underline">Logout</Link>
+                 <button onClick={handleLogout} className="btn btn-link text-sm font-medium text-blue-600 dark:text-blue-500 hover:underline">Logout</button>
                 :
                 <Link to='/login' class="text-sm font-medium text-blue-600 dark:text-blue-500 hover:underline">Login</Link>
              }          
