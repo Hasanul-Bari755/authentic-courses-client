@@ -24,17 +24,20 @@ const Header = () => {
                         <p className="mr-6 text-sm font-medium text-gray-500 dark:text-white hover:underline">{user?.displayName}</p>
                         {
                             user?.photoURL ?
-                        <div className="avatar mr-2">
-                            <div className="w-8 rounded">
-                                <img src={user?.photoURL} alt="Tailwind-CSS-Avatar-component" />
-                            </div>
+                         <div className="avatar mr-2 tooltip  tooltip-bottom"  data-tip={user?.displayName}>
+                                    
+                       <div className="avatar">
+                        <div className="w-8 rounded">
+                            <img src={user?.photoURL} alt="Tailwind-CSS-Avatar-component" />
+                        </div>
+                        </div>
                          </div> :
                         <FaUser className='mr-3'></FaUser>        
                         }
                 {user?.uid ? 
-                 <button onClick={handleLogout} className="btn btn-link text-sm font-medium text-blue-600 dark:text-blue-500 hover:underline normal-case">Logout</button>
+                 <button onClick={handleLogout} className="btn btn-link btn-sm text-sm font-medium  normal-case bg-slate-500 text-white hover:text-black">Logout</button>
                 :
-                <Link to='/login' className="text-sm font-medium text-blue-600 dark:text-blue-500 hover:underline">Login</Link>
+                <Link to='/login'><button className='btn btn-link btn-sm text-sm font-medium  normal-case bg-slate-500 text-white hover:text-black'>Login</button></Link>
              }          
            
         </div>
@@ -59,8 +62,9 @@ const Header = () => {
             </ul>
                      
         </div>
+                    
     </div>
-</nav>
+     </nav>
 
         </div>
     );
