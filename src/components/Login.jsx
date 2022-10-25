@@ -9,7 +9,7 @@ import { AuthContext } from '../contexts/AuthProvider';
 const Login = () => {
     const [error, setError] = useState('');
     const [userEmail,setUserEmail] = useState('')
-    const { login,setLoading,resetPassword } = useContext(AuthContext)
+    const { login,setLoading,resetPassword,signInWithGoogle } = useContext(AuthContext)
     const navigate = useNavigate();
     const location = useLocation()
     const from = location.state?.from?.pathname || '/course'
@@ -48,6 +48,18 @@ const Login = () => {
     const handleReset = () => {
         resetPassword(userEmail)
     }
+
+    const handleSignInWithGoogle = () => {
+        signInWithGoogle()
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+                navigate(from, {replace: true})
+            })
+            .catch(e => {
+            console.error(e)
+        })
+    }
     return (
           <div>
     <div className="hero min-h-screen bg-base-200 mt-0">
@@ -81,7 +93,7 @@ const Login = () => {
         </div>
             </form>
           <div className='flex justify-between m-7'>
-                <button className="btn btn-sm mr-1"><FaGoogle className='mr-2'></FaGoogle> Login Google</button>
+                <button onClick={handleSignInWithGoogle} className="btn btn-sm mr-1"><FaGoogle className='mr-2'></FaGoogle> Login Google</button>
                 <button className="btn btn-sm"><FaGithub className='mr-2'></FaGithub>Login github</button>
 
              </div>
