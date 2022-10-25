@@ -7,7 +7,7 @@ import { FaUser } from 'react-icons/fa';
 
 const Header = () => {
     const { user,logout } = useContext(AuthContext)
-    
+    console.log(user)
     const handleLogout = () => {
         logout()
     }

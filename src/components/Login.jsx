@@ -9,7 +9,7 @@ import { AuthContext } from '../contexts/AuthProvider';
 const Login = () => {
     const [error, setError] = useState('');
     const [userEmail,setUserEmail] = useState('')
-    const { login,setLoading,resetPassword,signInWithGoogle } = useContext(AuthContext)
+    const { login,setLoading,resetPassword,signInWithGoogle,signInWithGithub } = useContext(AuthContext)
     const navigate = useNavigate();
     const location = useLocation()
     const from = location.state?.from?.pathname || '/course'
@@ -26,11 +26,12 @@ const Login = () => {
                 setError('')
                 console.log(user)
                 form.reset()
-                if (user.emailVerified) {
-                     navigate(from, {replace: true})
-                } else {
-                    toast.error('Your email is not verified. Please verify your email address')
-                }
+                navigate(from, {replace: true})
+                // if (user.emailVerified) {
+                //      navigate(from, {replace: true})
+                // } else {
+                //     toast.error('Your email is not verified. Please verify your email address')
+                // }
                
             })
             .catch(e => {
@@ -51,6 +52,18 @@ const Login = () => {
 
     const handleSignInWithGoogle = () => {
         signInWithGoogle()
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+                navigate(from, {replace: true})
+            })
+            .catch(e => {
+            console.error(e)
+        })
+    }
+
+    const handleSignInWithGithub = () => {
+        signInWithGithub()
             .then(result => {
                 const user = result.user;
                 console.log(user)
@@ -94,7 +107,7 @@ const Login = () => {
             </form>
           <div className='flex justify-between m-7'>
                 <button onClick={handleSignInWithGoogle} className="btn btn-sm mr-1"><FaGoogle className='mr-2'></FaGoogle> Login Google</button>
-                <button className="btn btn-sm"><FaGithub className='mr-2'></FaGithub>Login github</button>
+                <button onClick={handleSignInWithGithub} className="btn btn-sm"><FaGithub className='mr-2'></FaGithub>Login github</button>
 
              </div>
         <button onClick={handleReset} className="btn btn-link normal-case "><small>Forgot Password</small></button>

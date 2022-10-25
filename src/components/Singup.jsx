@@ -24,7 +24,7 @@ const Singup = () => {
             setError('')
             form.reset();
             handleUpdateUserProfile(name, photoURL)
-            handleEmailVerification();
+          //  handleEmailVerification();
             toast.success('Please verify your email address')
         })
             .catch(e => {
@@ -43,11 +43,11 @@ const Singup = () => {
         .catch(e=> console.log(e))
     }
 
-    const handleEmailVerification = () => {
-        verifyEmail()
-            .then(() => { })
-        .catch(e=> console.error(e))
-    }
+    // const handleEmailVerification = () => {
+    //     verifyEmail()
+    //         .then(() => { })
+    //     .catch(e=> console.error(e))
+    // }
      return (
         <div>
     <div className="hero min-h-screen bg-base-200 mt-0">
