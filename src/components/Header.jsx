@@ -7,21 +7,21 @@ import { FaUser } from 'react-icons/fa';
 
 const Header = () => {
     const { user,logout } = useContext(AuthContext)
-    console.log(user)
+    
     const handleLogout = () => {
         logout()
     }
     return (
         <div>
             
-<nav class="bg-white border-gray-200 dark:bg-gray-900">
-    <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl px-4 md:px-6 py-2.5">
-        <Link to="/" class="flex items-center">
+<nav className="bg-white border-gray-200 dark:bg-gray-900">
+    <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl px-4 md:px-6 py-2.5">
+        <Link to="/" className="flex items-center">
             <img src="https://images-platform.99static.com//KlBLMX8dQrcq6hZGnxf5HSnG29I=/8x543:525x1060/fit-in/500x500/99designs-contests-attachments/123/123360/attachment_123360235" class="mr-3 h-6 sm:h-9" alt="Flowbite Logo"/>
-            <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Authentic Course</span>
+            <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Authentic Course</span>
         </Link>
-        <div class="flex items-center">
-                        <a href="tel:5541251234" class="mr-6 text-sm font-medium text-gray-500 dark:text-white hover:underline">{user?.displayName}</a>
+        <div className="flex items-center">
+                        <p className="mr-6 text-sm font-medium text-gray-500 dark:text-white hover:underline">{user?.displayName}</p>
                         {
                             user?.photoURL ?
                         <div className="avatar mr-2">
@@ -34,27 +34,27 @@ const Header = () => {
                 {user?.uid ? 
                  <button onClick={handleLogout} className="btn btn-link text-sm font-medium text-blue-600 dark:text-blue-500 hover:underline normal-case">Logout</button>
                 :
-                <Link to='/login' class="text-sm font-medium text-blue-600 dark:text-blue-500 hover:underline">Login</Link>
+                <Link to='/login' className="text-sm font-medium text-blue-600 dark:text-blue-500 hover:underline">Login</Link>
              }          
            
         </div>
     </div>
 </nav>
-<nav class="bg-gray-50 dark:bg-gray-700">
-    <div class="py-3 px-4 mx-auto max-w-screen-xl md:px-6">
-        <div class="flex items-center justify-between">
-            <ul class="flex flex-row mt-0 mr-6 space-x-8 text-sm font-medium">
+<nav className="bg-gray-50 dark:bg-gray-700">
+    <div className="py-3 px-4 mx-auto max-w-screen-xl md:px-6">
+        <div className="flex items-center justify-between">
+            <ul className="flex flex-row mt-0 mr-6 space-x-8 text-sm font-medium">
                 <li>
-                    <NavLink to="/" class="text-gray-900 dark:text-white hover:underline" aria-current="page">Home</NavLink>
+                    <NavLink to="/" className="text-gray-900 dark:text-white hover:underline" aria-current="page">Home</NavLink>
                 </li>
                 <li>
-                    <NavLink to='/course' class="text-gray-900 dark:text-white hover:underline">Courses</NavLink>
+                    <NavLink to='/course' className="text-gray-900 dark:text-white hover:underline">Courses</NavLink>
                 </li>
                 <li>
-                    <NavLink to='/blog' class="text-gray-900 dark:text-white hover:underline">Blog</NavLink>
+                    <NavLink to='/blog' className="text-gray-900 dark:text-white hover:underline">Blog</NavLink>
                 </li>
                 <li>
-                    <NavLink to='/FAQ' class="text-gray-900 dark:text-white hover:underline">dg</NavLink>
+                    <NavLink to='/FAQ' className="text-gray-900 dark:text-white hover:underline">FAQ</NavLink>
                 </li>
             </ul>
                      
