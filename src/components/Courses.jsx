@@ -15,7 +15,7 @@ const Courses = () => {
             <div className='col-span-1'>
                 
                 {
-                    courses.map(c => <ul key={c._id} className="menu bg-base-100 w-56 rounded-box"><li><Link to={`/course/${c._id}`}>{c.name}</Link></li></ul>)
+                    courses.map(c => <ul key={c._id} className="menu bg-base-100 w-56 rounded-box text-center"><li className='bg-emerald-200 mb-2 font-bold'><Link to={`/course/${c._id}`}>{c.name}</Link></li></ul>)
                 }
            </div>
       </div>

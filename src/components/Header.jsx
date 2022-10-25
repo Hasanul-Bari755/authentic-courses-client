@@ -32,7 +32,7 @@ const Header = () => {
                         <FaUser className='mr-3'></FaUser>        
                         }
                 {user?.uid ? 
-                 <button onClick={handleLogout} className="btn btn-link text-sm font-medium text-blue-600 dark:text-blue-500 hover:underline">Logout</button>
+                 <button onClick={handleLogout} className="btn btn-link text-sm font-medium text-blue-600 dark:text-blue-500 hover:underline normal-case">Logout</button>
                 :
                 <Link to='/login' class="text-sm font-medium text-blue-600 dark:text-blue-500 hover:underline">Login</Link>
              }          
