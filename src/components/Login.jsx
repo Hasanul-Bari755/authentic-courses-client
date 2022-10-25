@@ -1,15 +1,18 @@
 import React from 'react';
 import { useState } from 'react';
 import { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthProvider';
 
 const Login = () => {
     const [error, setError] = useState('');
-    const { login } = useContext(AuthContext)
+    const [userEmail,setUserEmail] = useState('')
+    const { login,setLoading,resetPassword } = useContext(AuthContext)
     const navigate = useNavigate();
-
+    const location = useLocation()
+    const from = location.state?.from?.pathname || '/course'
 
     const handleSubmit = (event) => {
          event.preventDefault();
@@ -23,15 +26,30 @@ const Login = () => {
                 setError('')
                 console.log(user)
                 form.reset()
-                navigate('/')
+                if (user.emailVerified) {
+                     navigate(from, {replace: true})
+                } else {
+                    toast.error('Your email is not verified. Please verify your email address')
+                }
+               
             })
             .catch(e => {
                 console.error(e)
                 setError(e.message)
+            })
+            .finally(() => {
+            setLoading(false)
         })
     }
+   
+    const getUserEmail = (event) => {
+        setUserEmail(event.target.value)
+    }
+    const handleReset = () => {
+        resetPassword(userEmail)
+    }
     return (
-        <div>
+          <div>
     <div className="hero min-h-screen bg-base-200 mt-0">
   <div className="hero-content flex-col">
     <div className="text-center lg:text-left">
@@ -44,7 +62,7 @@ const Login = () => {
           <label className="label">
             <span className="label-text">Email</span>
           </label>
-          <input name='email' type="email" placeholder="email" className="input input-bordered" required />
+          <input onBlur={getUserEmail} name='email' type="email" placeholder="email" className="input input-bordered" required />
         </div>
         <div className="form-control">
           <label className="label">
@@ -52,23 +70,25 @@ const Login = () => {
           </label>
           <input name='password' type="password" placeholder="password" className="input input-bordered" required/>
           <label className="label">
-            <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+          
           </label>
             </div>
         <p>{error }</p>                
         <div className="form-control mt-6">
           <button className="btn btn-primary">Login</button>
         <span><small>Don't have an account yet?<Link to='/signup'><button className="btn btn-link">Sign Up</button></Link></small></span>
-            <div className='flex justify-between'>
+            
+        </div>
+            </form>
+          <div className='flex justify-between m-7'>
                 <button className="btn btn-sm mr-1"><FaGoogle className='mr-2'></FaGoogle> Login Google</button>
                 <button className="btn btn-sm"><FaGithub className='mr-2'></FaGithub>Login github</button>
 
              </div>
-        </div>
-      </form>
+        <button onClick={handleReset} className="btn btn-link normal-case "><small>Forgot Password</small></button>
     </div>
   </div>
-</div>
+   </div>
         </div>
     );
 };

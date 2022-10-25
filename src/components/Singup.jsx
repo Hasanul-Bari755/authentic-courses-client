@@ -81,7 +81,7 @@ const Singup = () => {
             <span className="label-text">Password</span>
           </label>
           <input name='password' type="password" placeholder="password" className="input input-bordered" required />
-             </div>
+        </div>
             <p className='text-red-600'>{error }</p>
         <div className="form-control mt-6">
           <button className="btn btn-primary">Sign Up</button>
