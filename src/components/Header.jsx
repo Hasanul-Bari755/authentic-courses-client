@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 import { useContext } from 'react';
 import { AuthContext } from '../contexts/AuthProvider';
@@ -45,16 +45,16 @@ const Header = () => {
         <div class="flex items-center justify-between">
             <ul class="flex flex-row mt-0 mr-6 space-x-8 text-sm font-medium">
                 <li>
-                    <Link to="/" class="text-gray-900 dark:text-white hover:underline" aria-current="page">Home</Link>
+                    <NavLink to="/" class="text-gray-900 dark:text-white hover:underline" aria-current="page">Home</NavLink>
                 </li>
                 <li>
-                    <Link to='/course' class="text-gray-900 dark:text-white hover:underline">Courses</Link>
+                    <NavLink to='/course' class="text-gray-900 dark:text-white hover:underline">Courses</NavLink>
                 </li>
                 <li>
-                    <a href="#" class="text-gray-900 dark:text-white hover:underline">Team</a>
+                    <NavLink to='/blog' class="text-gray-900 dark:text-white hover:underline">Blog</NavLink>
                 </li>
                 <li>
-                    <a href="#" class="text-gray-900 dark:text-white hover:underline">{ user?.name}</a>
+                    <NavLink to='/FAQ' class="text-gray-900 dark:text-white hover:underline">dg</NavLink>
                 </li>
             </ul>
                      
