@@ -2,7 +2,7 @@ import React from 'react';
 
 const Blog = () => {
     return (
-        <div className='lg:w-[95%] lg:mx-auto lg:mt-3 grid lg:grid-cols-2 lg:gap-3  grid-cols-1'>
+        <div className='lg:w-[95%] lg:mx-auto lg:mt-3 grid lg:grid-cols-2 md:grid-cols-2 lg:gap-3  grid-cols-1'>
            <div className="max-w-md p-6 overflow-hidden rounded-lg shadow dark:bg-gray-900 dark:text-gray-100">
 	        <article>
 		  <h2 className="text-xl font-bold"> What is cors?</h2>

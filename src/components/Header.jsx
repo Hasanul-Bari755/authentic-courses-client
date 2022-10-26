@@ -3,11 +3,15 @@ import { Link, NavLink } from 'react-router-dom';
 
 import { useContext } from 'react';
 import { AuthContext } from '../contexts/AuthProvider';
-import { FaUser } from 'react-icons/fa';
+import { FaBars, FaUser } from 'react-icons/fa';
+import { useState } from 'react';
 
 const Header = () => {
     const { user,logout } = useContext(AuthContext)
-    
+   const [isMD, setIsMD] = useState(false);
+  const responsive = () => {
+    setIsMD(!isMD);
+  };
     const handleLogout = () => {
         logout()
     }
@@ -46,9 +50,9 @@ const Header = () => {
 <nav className="bg-gray-50 dark:bg-gray-700">
     <div className="py-3 px-4 mx-auto max-w-screen-xl md:px-6">
         <div className="flex items-center justify-between">
-            <ul className="flex flex-row mt-0 mr-6 space-x-8 text-sm font-medium">
+            <ul className={` md:flex-row mt-0 mr-6 space-x-8 text-sm font-medium md:flex ${isMD? 'flex flex-col  md:flex md:flex-row ' : 'hidden' } `}>
                 <li>
-                    <NavLink to="/" className='text-gray-900 dark:text-white hover:underline text-lg'   aria-current="page">Home</NavLink>
+                    <NavLink to="/" className='text-gray-900 ml-8 md:ml-0 dark:text-white hover:underline text-lg'   aria-current="page">Home</NavLink>
                 </li>
                 <li>
                     <NavLink to='/course' className={({isActive})=> isActive ? ' dark:text-white hover:underline  bg-sky-900 text-white p-1 rounded-sm text-lg' : 'text-gray-900 dark:text-white hover:underline text-lg'}>Courses</NavLink>
@@ -58,10 +62,14 @@ const Header = () => {
                 </li>
                 <li>
                     <NavLink to='/FAQ'className={({isActive})=> isActive ? ' dark:text-white hover:underline  bg-sky-900 text-white p-1 rounded-sm text-lg' : 'text-gray-900 dark:text-white hover:underline text-lg'}>FAQ</NavLink>
-                </li>
-            </ul>
+                            </li>
+                   
+                 </ul>
+                        <div className="absolute top-11 right-5 text-3xl md:hidden">
+                             <button onClick={responsive}><FaBars></FaBars></button>
+                        </div>
                      
-        </div>
+                </div>
                     
     </div>
      </nav>
