@@ -24,18 +24,18 @@ export  const router = createBrowserRouter([
             {
                 path: '/course',
                 element: <Courses></Courses>,
-                loader: ()=> fetch('http://localhost:5000/courses')
+                loader: ()=> fetch('https://authentic-courses-server.vercel.app/courses')
             },
             {
                 path: '/course/:id',
                 element: <CourseDetails></CourseDetails>,
-                loader: ({params})=> fetch(`http://localhost:5000/course/${params.id}`)
+                loader: ({params})=> fetch(`https://authentic-courses-server.vercel.app/course/${params.id}`)
                 
             },
             {
                 path: '/checkout/:id',
                 element: <PrivateRoute><CheckOut></CheckOut></PrivateRoute>,
-                loader: ({params})=> fetch(`http://localhost:5000/checkout/${params.id}`)
+                loader: ({params})=> fetch(`https://authentic-courses-server.vercel.app/checkout/${params.id}`)
         
             },
             {

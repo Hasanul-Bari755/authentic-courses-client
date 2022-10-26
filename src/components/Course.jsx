@@ -1,7 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Course = ({ course }) => {
-    const {name,picture } = course;
+    const {_id,name,picture } = course;
     return (
         <div>
         <div className="max-w-xs rounded-md shadow-md dark:bg-gray-900 dark:text-gray-100">
@@ -11,7 +12,7 @@ const Course = ({ course }) => {
             <h2 className="text-3xl font-semibold tracking-wide">{name }</h2>
 			<p className="dark:text-gray-100">Curabitur luctus erat nunc, sed ullamcorper erat vestibulum eget.</p>
 		</div>
-		
+		<Link to={`/course/${_id}`}><button class="btn btn-sm btn-wide">Details</button></Link>
 	</div>
   </div>
         </div>
