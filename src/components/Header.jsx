@@ -42,7 +42,7 @@ const Header = () => {
                         </div>
                         </div>
                          </div> :
-                        <FaUser className='mr-3'></FaUser>        
+                        <FaUser className='mr-3 text-black'></FaUser>        
                         }
                 {user?.uid ? 
                  <button onClick={handleLogout} className="btn btn-link btn-sm text-sm font-medium  normal-case bg-slate-500 text-white hover:text-black">Logout</button>

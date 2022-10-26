@@ -4,6 +4,7 @@ import { useContext } from 'react';
 import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthProvider';
+import Loder from './Loder';
 
 const Singup = () => {
     const [error, setError] = useState('');
@@ -50,7 +51,9 @@ const Singup = () => {
         if (user) {
             navigate(from, {replace: true})
         }
-    },[user,navigate,from])
+    }, [user, navigate, from])
+    
+   
 
     // const handleEmailVerification = () => {
     //     verifyEmail()
@@ -59,10 +62,10 @@ const Singup = () => {
     // }
      return (
         <div>
-    <div className="hero min-h-screen bg-base-200 mt-0">
+    <div className="hero min-h-screen  mt-0">
   <div className="hero-content flex-col">
     <div className="text-center lg:text-left">
-      <h1 className="text-5xl font-bold">Sign Up now!</h1>
+      <h1 className="text-5xl font-bold text-blue-800">Sign Up now!</h1>
       
     </div>
     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
@@ -94,7 +97,7 @@ const Singup = () => {
             <p className='text-red-600'>{error }</p>
         <div className="form-control mt-6">
           <button className="btn btn-primary">Sign Up</button>
-        <span><small>Allready have an account yet?<Link to='/login'><button className="btn btn-link">Login</button></Link></small></span>
+        <span><small className='text-blue-800'>Allready have an account yet?<Link to='/login'><button className="btn btn-link">Login</button></Link></small></span>
            
         </div>
       </form>
