@@ -6,7 +6,7 @@ const CheckOut = () => {
     const { _id, name, picture } = course;
     console.log(course)
     return (
-        <div className='w-[35%] mx-auto'>
+        <div className='lg:w-[35%] lg:mx-auto w-[90%] mx-auto'>
             <div className="max-w-xs p-6 rounded-md shadow-md dark:bg-gray-900 dark:text-gray-50">
                 <img src={picture} alt="" className="object-cover object-center w-full rounded-md h-72 dark:bg-gray-500" />
                 <div className="mt-6 mb-2">

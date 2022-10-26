@@ -3,10 +3,12 @@ import { Link, NavLink } from 'react-router-dom';
 
 import { useContext } from 'react';
 import { AuthContext } from '../contexts/AuthProvider';
-import { FaBars, FaUser } from 'react-icons/fa';
+import { FaBars, FaMoon, FaSun, FaUser } from 'react-icons/fa';
 import { useState } from 'react';
+import { ThemContext } from '../App';
 
 const Header = () => {
+    const {them,setThem} = useContext(ThemContext)
     const { user,logout } = useContext(AuthContext)
    const [isMD, setIsMD] = useState(false);
   const responsive = () => {
@@ -15,6 +17,10 @@ const Header = () => {
     const handleLogout = () => {
         logout()
     }
+
+    const changeThem = () => {
+        setThem(!them)
+    }
     return (
         <div>
             
@@ -22,7 +28,7 @@ const Header = () => {
     <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl px-4 md:px-6 py-2.5">
         <Link to="/" className="flex items-center">
             <img src="https://images-platform.99static.com//KlBLMX8dQrcq6hZGnxf5HSnG29I=/8x543:525x1060/fit-in/500x500/99designs-contests-attachments/123/123360/attachment_123360235" class="mr-3 h-6 sm:h-9" alt="Flowbite Logo"/>
-            <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Authentic Course</span>
+            <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white text-black">Authentic Course</span>
         </Link>
         <div className="flex items-center">
                         <p className="mr-6 text-sm font-medium text-gray-500 dark:text-white hover:underline">{user?.displayName}</p>
@@ -63,10 +69,12 @@ const Header = () => {
                 <li>
                     <NavLink to='/FAQ'className={({isActive})=> isActive ? ' dark:text-white hover:underline  bg-sky-900 text-white p-1 rounded-sm text-lg' : 'text-gray-900 dark:text-white hover:underline text-lg'}>FAQ</NavLink>
                             </li>
+                                 
                    
-                 </ul>
+                        </ul>
+                        <p onClick={changeThem}>{them?<span className='flex justify-center align-middle'> <span className='mr-2 font-semibold'>Dark</span> <FaMoon></FaMoon></span> :<span className='flex'> <span className='text-black mr-2 font-semibold'>Light</span> <FaSun className='text-black'></FaSun></span> }</p>
                         <div className="absolute top-11 right-5 text-3xl md:hidden">
-                             <button onClick={responsive}><FaBars></FaBars></button>
+                             <button onClick={responsive}><FaBars className='text-black'></FaBars></button>
                         </div>
                      
                 </div>

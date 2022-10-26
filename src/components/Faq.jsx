@@ -2,10 +2,10 @@ import React from 'react';
 
 const Faq = () => {
     return (
-        <div className='w-[95%] mx-auto mb-36'>
+        <div className='w-[95%] mx-auto mb-36 mt-5 text-black'>
            
             <div tabindex="0" className="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
-            <div className="collapse-title text-xl font-medium">
+            <div className="collapse-title text-xl font-medium bg-slate-500">
                 Which type of support of your course?
             </div>
             <div className="collapse-content"> 
@@ -13,7 +13,7 @@ const Faq = () => {
             </div>
             </div>
             <div tabindex="0" className="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
-            <div className="collapse-title text-xl font-medium">
+            <div className="collapse-title text-xl font-medium bg-slate-500">
                 Time duration of your course?
             </div>
             <div className="collapse-content"> 
@@ -21,7 +21,7 @@ const Faq = () => {
             </div>
             </div>
             <div tabindex="0" className="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
-            <div className="collapse-title text-xl font-medium">
+            <div className="collapse-title text-xl font-medium bg-slate-500">
                 How many time give on your courses per day?
             </div>
             <div className="collapse-content"> 
@@ -29,7 +29,7 @@ const Faq = () => {
             </div>
             </div>
             <div tabindex="0" className="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
-            <div className="collapse-title text-xl font-medium">
+            <div className="collapse-title text-xl font-medium bg-slate-500">
                 Success rate of your course?
             </div>
             <div className="collapse-content"> 
@@ -37,7 +37,7 @@ const Faq = () => {
             </div>
             </div>
             <div tabindex="0" className="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
-            <div className="collapse-title text-xl font-medium">
+            <div className="collapse-title text-xl font-medium bg-slate-500">
                 Total support member of your course?
             </div>
             <div className="collapse-content"> 
