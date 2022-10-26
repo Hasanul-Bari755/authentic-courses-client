@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { useContext } from 'react';
 import toast from 'react-hot-toast';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthProvider';
 
 const Singup = () => {
     const [error, setError] = useState('');
 
-    const { createUser, updateUserProfile, verifyEmail } = useContext(AuthContext) 
-    
+    const {user, createUser, updateUserProfile, verifyEmail } = useContext(AuthContext) 
+    const location = useLocation();
+    const navigate = useNavigate();
+    const from = location.state?.from?.pathname || '/course'
     const handleSubmit = (event) => {
         event.preventDefault();
         const form = event.target;
@@ -25,7 +27,8 @@ const Singup = () => {
             form.reset();
             handleUpdateUserProfile(name, photoURL)
           //  handleEmailVerification();
-            toast.success('Please verify your email address')
+             
+            toast.success('Sign up successfully')
         })
             .catch(e => {
                 console.error(e)
@@ -42,6 +45,12 @@ const Singup = () => {
             .then(() => { })
         .catch(e=> console.log(e))
     }
+
+    useEffect(() => {
+        if (user) {
+            navigate(from, {replace: true})
+        }
+    },[user,navigate,from])
 
     // const handleEmailVerification = () => {
     //     verifyEmail()

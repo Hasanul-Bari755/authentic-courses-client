@@ -26,7 +26,8 @@ const Login = () => {
                 setError('')
                 console.log(user)
                 form.reset()
-                navigate(from, {replace: true})
+                navigate(from, { replace: true })
+                toast.success('Login successfully')
                 // if (user.emailVerified) {
                 //      navigate(from, {replace: true})
                 // } else {

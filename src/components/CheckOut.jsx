@@ -1,10 +1,16 @@
 import React from 'react';
+
+import toast from 'react-hot-toast';
 import { useLoaderData } from 'react-router-dom';
 
 const CheckOut = () => {
     const course = useLoaderData();
     const { _id, name, picture } = course;
-    console.log(course)
+
+    toast('Wellcome!', {
+       icon: '👏',
+    });
+    
     return (
         <div className='lg:w-[35%] lg:mx-auto w-[90%] mx-auto'>
             <div className="max-w-xs p-6 rounded-md shadow-md dark:bg-gray-900 dark:text-gray-50">
