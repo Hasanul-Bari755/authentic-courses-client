@@ -44,7 +44,8 @@ const Header = () => {
                          </div> :
                         <FaUser className='mr-3 text-black'></FaUser>        
                         }
-                {user?.uid ? 
+                {
+                            user?.uid ? 
                  <button onClick={handleLogout} className="btn btn-link btn-sm text-sm font-medium  normal-case bg-slate-500 text-white hover:text-black">Logout</button>
                 :
                 <Link to='/login'><button className='btn btn-link btn-sm text-sm font-medium  normal-case bg-slate-500 text-white hover:text-black'>Login</button></Link>

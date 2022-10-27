@@ -48,7 +48,8 @@ const Login = () => {
         setUserEmail(event.target.value)
     }
     const handleReset = () => {
-        resetPassword(userEmail)
+      resetPassword(userEmail)
+      toast('Check your email address.')
     }
 
     const handleSignInWithGoogle = () => {
